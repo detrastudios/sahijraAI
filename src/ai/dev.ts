@@ -1,1 +1,5 @@
-// Flows will be imported for their side effects in this file.
+import { config } from 'dotenv';
+config();
+
+import '@/ai/flows/ask-sahabat-hijrah.ts';
+import '@/ai/flows/generate-islamic-advice.ts';
