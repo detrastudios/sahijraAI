@@ -1,12 +1,14 @@
 'use client';
 
 import type { FC } from 'react';
-import { User } from 'lucide-react';
+import { User, Copy } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Markdown } from '@/components/markdown';
 import { LogoIcon } from '@/components/icons';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 export type Message = {
   role: 'user' | 'ai';
@@ -19,12 +21,24 @@ interface ChatMessageProps {
 }
 
 export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }) => {
+  const { toast } = useToast();
   const isAi = message.role === 'ai';
+
+  const onCopy = () => {
+    if (message.content) {
+      navigator.clipboard.writeText(message.content).then(() => {
+        toast({
+          title: 'Copied to clipboard',
+          description: 'The AI\'s response has been copied.',
+        });
+      });
+    }
+  };
 
   return (
     <div
       className={cn(
-        'flex items-start gap-4',
+        'group flex items-start gap-4',
         !isAi && 'flex-row-reverse'
       )}
     >
@@ -41,7 +55,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }
       </Avatar>
       <div
         className={cn(
-          'max-w-xl rounded-lg p-4 shadow-sm',
+          'relative max-w-xl rounded-lg p-4 shadow-sm',
           isAi
             ? 'rounded-tl-none bg-card'
             : 'rounded-tr-none bg-primary text-primary-foreground'
@@ -54,7 +68,20 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }
             <span className="h-2 w-2 animate-pulse rounded-full bg-muted-foreground delay-300"></span>
           </div>
         ) : (
-          <Markdown content={message.content} />
+          <>
+            <Markdown content={message.content} />
+            {isAi && !isLoading && (
+              <Button
+                onClick={onCopy}
+                size="icon"
+                variant="ghost"
+                className="absolute -right-12 top-0 h-8 w-8 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100"
+              >
+                <Copy className="h-4 w-4" />
+                <span className="sr-only">Copy message</span>
+              </Button>
+            )}
+          </>
         )}
       </div>
     </div>
