@@ -18,7 +18,7 @@ export default function AboutPage() {
           Tentang Sahijra
         </h1>
       </header>
-      <main className="flex-1 overflow-auto p-6">
+      <main className="flex-1 overflow-auto p-4 md:p-6">
         <div className="mx-auto max-w-2xl">
           <div className="text-center">
             <LogoIcon className="mx-auto mb-4 h-16 w-16 text-primary" />
