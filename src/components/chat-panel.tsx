@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 import { useState, useRef, useEffect, useTransition } from 'react';
-import { Send, Settings, MessageSquarePlus } from 'lucide-react';
+import { Send, Settings, MessageSquarePlus, History } from 'lucide-react';
 import Link from 'next/link';
 
 import { askAI } from '@/app/actions';
@@ -100,6 +100,13 @@ export const ChatPanel: FC = () => {
             <Button variant="ghost" size="icon" onClick={handleNewChat}>
               <MessageSquarePlus className="h-5 w-5" />
               <span className="sr-only">Chat Baru</span>
+            </Button>
+            <Button variant="ghost" size="icon" onClick={() => {
+              // TODO: Implement history functionality
+              toast({ title: 'Fitur Riwayat', description: 'Fitur ini sedang dalam pengembangan.' });
+            }}>
+              <History className="h-5 w-5" />
+              <span className="sr-only">Riwayat</span>
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
