@@ -44,7 +44,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }
     >
       <Avatar className="h-9 w-9 border shadow-sm">
         {isAi ? (
-          <AvatarFallback className="bg-primary/10 text-primary dark:bg-primary/10 dark:text-primary">
+          <AvatarFallback className="bg-primary/10 text-foreground dark:bg-primary/10 dark:text-primary">
             <LogoIcon className="h-5 w-5" />
           </AvatarFallback>
         ) : (
