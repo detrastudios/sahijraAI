@@ -72,14 +72,18 @@ export const ChatPanel: FC = () => {
   };
 
   const handleNewChat = () => {
+    // Save the current chat if it has more than just the initial AI message
     if (messages.length > 1) {
       const newChat: ChatHistory = {
         id: new Date().toISOString(),
         title: messages[1]?.content.substring(0, 30) + '...' || 'New Chat',
         messages: messages,
       };
-      saveHistory([newChat, ...history]);
+      // Prepend the new chat to the history
+      const updatedHistory = [newChat, ...history];
+      saveHistory(updatedHistory);
     }
+    // Reset the chat to the initial state
     setMessages(initialMessages);
   };
   
