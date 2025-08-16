@@ -24,7 +24,7 @@ export default function AboutPage() {
             <LogoIcon className="mx-auto mb-4 h-16 w-16 text-primary" />
             <h2 className="mb-2 text-3xl font-bold">Sahabat Hijrah AI</h2>
             <p className="mb-6 text-muted-foreground">
-              Sahabat Anda dalam menuntut ilmu sesuai Al-Qur'an dan Sunnah dengan pemahaman Salafus Shalih.
+              Sahabat dalam menuntut ilmu sesuai Al-Qur'an dan Sunnah dengan pemahaman Salafus Shalih.
             </p>
           </div>
           <div className="text-left space-y-4">

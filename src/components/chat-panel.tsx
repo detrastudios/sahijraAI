@@ -28,7 +28,7 @@ const initialMessages: Message[] = [
   {
     role: 'ai',
     content:
-      "Assalamu'alaikum, Sahabat! Silakan ajukan pertanyaan kamu seputar agama Islam. InsyaAllah saya akan bantu menjawab berdasarkan Al-Qur'an dan Sunnah. Barkallahu fiikum",
+      "Assalamu'alaikum, Sahabat! Silakan ajukan pertanyaan seputar agama Islam. InsyaAllah saya akan bantu menjawab berdasarkan Al-Qur'an dan Sunnah. Barkallahu fiikum",
   },
 ];
 
@@ -206,7 +206,7 @@ export const ChatPanel: FC = () => {
           >
             <Input
               type="text"
-              placeholder="Ketik pertanyaan Anda di sini..."
+              placeholder="Ketik pertanyaan Sahabat di sini..."
               value={input}
               onChange={handleInputChange}
               disabled={isPending}

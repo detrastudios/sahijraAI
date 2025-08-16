@@ -40,7 +40,7 @@ export default function SupportPage() {
               <Heart className="mx-auto mb-4 h-12 w-12 text-primary" />
               <CardTitle>Dukung Dakwah Kami</CardTitle>
               <CardDescription>
-                Kontribusi Anda membantu kami untuk terus menyebarkan ilmu yang bermanfaat.
+                Kontribusi Sahabat membantu kami untuk terus menyebarkan ilmu yang bermanfaat.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6 text-center">
@@ -58,7 +58,7 @@ export default function SupportPage() {
                 <Separator />
 
                 <div className="space-y-4">
-                    <p className="font-semibold">Mari berjuang bersama dalam dakwah untuk menyebarkan ilmu yang bermanfaat. Dukungan Anda sangat berarti.</p>
+                    <p className="font-semibold">Mari berjuang bersama dalam dakwah untuk menyebarkan ilmu yang bermanfaat. Dukungan Sahabat sangat berarti.</p>
                     <div>
                         <p className="font-bold text-lg">Bank Syariah Indonesia (BSI)</p>
                         <div className="flex items-center justify-center gap-2">
@@ -78,7 +78,7 @@ export default function SupportPage() {
                    </Link>
                  </Button>
 
-                 <p className="text-xs text-muted-foreground pt-4">Jazakumullahu khairan atas dukungan Anda!</p>
+                 <p className="text-xs text-muted-foreground pt-4">Jazakumullahu khairan atas dukungan Sahabat!</p>
 
             </CardContent>
            </Card>

@@ -5,7 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Sahabat Hijrah AI',
-  description: 'Asisten AI Anda untuk menjawab pertanyaan seputar Islam.',
+  description: 'Asisten AI untuk menjawab pertanyaan seputar Islam.',
 };
 
 export default function RootLayout({
