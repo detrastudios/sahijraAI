@@ -28,7 +28,7 @@ const initialMessages: Message[] = [
   {
     role: 'ai',
     content:
-      "Assalamu'alaikum, Sahabat! Silakan ajukan pertanyaan seputar agama Islam. InsyaAllah saya akan bantu menjawab berdasarkan Al-Qur'an dan Sunnah. Barkallahu fiikum",
+      "Assalamu'alaikum, Sahabat! Silakan ajukan pertanyaan kamu seputar agama Islam. InsyaAllah saya akan bantu menjawab berdasarkan Al-Qur'an dan Sunnah. Barkallahu fiikum",
   },
 ];
 
@@ -103,7 +103,7 @@ export const ChatPanel: FC = () => {
       const response = await askAI(userMessage.content);
       if (
         response ===
-        'Maaf, terjadi kesalahan saat memproses permintaan Anda. Silakan coba lagi nanti.'
+        'Maaf, terjadi kesalahan saat memproses permintaan Sahabat. Silakan coba lagi nanti.'
       ) {
         toast({
           title: 'Error',
