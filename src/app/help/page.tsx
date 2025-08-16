@@ -54,6 +54,12 @@ export default function HelpPage() {
                     Arahkan mouse Anda ke pesan respons AI, dan ikon "Salin" akan muncul. Klik ikon tersebut untuk menyalin teks jawaban ke clipboard Anda.
                   </AccordionContent>
                 </AccordionItem>
+                <AccordionItem value="item-6">
+                  <AccordionTrigger>Apakah aplikasi ini berbayar?</AccordionTrigger>
+                  <AccordionContent>
+                    Tidak. Aplikasi Sahabat Hijrah AI ini 100% GRATIS dan dirancang untuk membantu umat. Dilarang keras untuk memperjualbelikan aplikasi atau akun yang terkait dengan tools ini dalam bentuk apapun. Mari kita manfaatkan untuk kebaikan bersama.
+                  </AccordionContent>
+                </AccordionItem>
                 <AccordionItem value="item-5">
                   <AccordionTrigger>Bagaimana cara menghubungi Sahijra?</AccordionTrigger>
                   <AccordionContent>
