@@ -96,7 +96,11 @@ export const ChatPanel: FC = () => {
           <h1 className="font-headline text-xl font-semibold text-foreground">
             Sahabat Hijrah AI
           </h1>
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-1">
+            <Button variant="ghost" size="icon" onClick={handleNewChat}>
+              <MessageSquarePlus className="h-5 w-5" />
+              <span className="sr-only">Chat Baru</span>
+            </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -107,10 +111,6 @@ export const ChatPanel: FC = () => {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Menu</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onSelect={handleNewChat}>
-                  <MessageSquarePlus className="mr-2 h-4 w-4" />
-                  <span>Chat Baru</span>
-                </DropdownMenuItem>
                 <DropdownMenuItem onSelect={() => setSettingsOpen(true)}>
                   Tampilan
                 </DropdownMenuItem>
