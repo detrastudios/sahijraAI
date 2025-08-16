@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 import { useState, useRef, useEffect, useTransition } from 'react';
-import { Send, Settings } from 'lucide-react';
+import { Send, Settings, MessageSquarePlus } from 'lucide-react';
 import Link from 'next/link';
 
 import { askAI } from '@/app/actions';
@@ -23,15 +23,17 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { SettingsSheet } from '@/components/settings-sheet';
 
+const initialMessages: Message[] = [
+  {
+    role: 'ai',
+    content:
+      "Assalamu'alaikum, saya Sahabat Hijrah. Silakan ajukan pertanyaan Anda tentang agama Islam. InsyaAllah saya akan bantu menjawab berdasarkan Al-Qur'an dan Sunnah.",
+  },
+];
+
 export const ChatPanel: FC = () => {
   const { toast } = useToast();
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: 'ai',
-      content:
-        'Assalamu\'alaikum, saya Sahabat Hijrah. Silakan ajukan pertanyaan Anda tentang agama Islam. InsyaAllah saya akan bantu menjawab berdasarkan Al-Qur\'an dan Sunnah.',
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState('');
   const [isPending, startTransition] = useTransition();
   const [isDisclaimerOpen, setDisclaimerOpen] = useState(true);
@@ -40,6 +42,10 @@ export const ChatPanel: FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
+  };
+
+  const handleNewChat = () => {
+    setMessages(initialMessages);
   };
 
   const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
@@ -99,8 +105,12 @@ export const ChatPanel: FC = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Pengaturan</DropdownMenuLabel>
+                <DropdownMenuLabel>Menu</DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem onSelect={handleNewChat}>
+                  <MessageSquarePlus className="mr-2 h-4 w-4" />
+                  <span>Chat Baru</span>
+                </DropdownMenuItem>
                 <DropdownMenuItem onSelect={() => setSettingsOpen(true)}>
                   Tampilan
                 </DropdownMenuItem>
