@@ -99,19 +99,19 @@ export const ChatPanel: FC = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Settings</DropdownMenuLabel>
+                <DropdownMenuLabel>Pengaturan</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onSelect={() => setSettingsOpen(true)}>
-                  Appearance
+                  Tampilan
                 </DropdownMenuItem>
                  <DropdownMenuItem asChild>
-                  <Link href="/help">Help</Link>
+                  <Link href="/help">Pusat Bantuan</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/about">About Sahijra</Link>
+                  <Link href="/about">Tentang Sahijra</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/support">Support Dakwah</Link>
+                  <Link href="/support">Dukung Dakwah</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

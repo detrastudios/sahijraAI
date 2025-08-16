@@ -30,33 +30,33 @@ export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Appearance</SheetTitle>
+          <SheetTitle>Tampilan</SheetTitle>
           <SheetDescription>
-            Customize the look and feel of the application.
+            Sesuaikan tampilan dan nuansa aplikasi.
           </SheetDescription>
         </SheetHeader>
         <div className="space-y-6 py-6">
           <div className="space-y-2">
-            <Label>Theme</Label>
+            <Label>Tema</Label>
             <div className="flex gap-2">
               <Button
                 variant={theme === 'light' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setTheme('light')}
               >
-                <Sun className="mr-2 h-4 w-4" /> Light
+                <Sun className="mr-2 h-4 w-4" /> Terang
               </Button>
               <Button
                 variant={theme === 'dark' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setTheme('dark')}
               >
-                <Moon className="mr-2 h-4 w-4" /> Dark
+                <Moon className="mr-2 h-4 w-4" /> Gelap
               </Button>
             </div>
           </div>
           <div className="space-y-2">
-            <Label>Font Size</Label>
+            <Label>Ukuran font</Label>
             <Slider
               defaultValue={[1]}
               min={0.8}
@@ -65,9 +65,9 @@ export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
               onValueChange={handleFontSizeChange}
             />
              <div className="flex justify-between text-xs text-muted-foreground">
-              <span>Small</span>
+              <span>Kecil</span>
               <span>Default</span>
-              <span>Large</span>
+              <span>Besar</span>
             </div>
           </div>
         </div>
