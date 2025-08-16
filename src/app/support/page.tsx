@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 export default function SupportPage() {
   return (
@@ -27,16 +28,30 @@ export default function SupportPage() {
                 Kontribusi Anda membantu kami untuk terus menyebarkan ilmu yang bermanfaat.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4 text-center">
-                <p>
+            <CardContent className="space-y-6 text-center">
+                <p className="text-muted-foreground">
                   “Perumpamaan (nafkah yang dikeluarkan oleh) orang-orang yang menafkahkan hartanya di jalan Allah adalah serupa dengan sebutir benih yang menumbuhkan tujuh bulir, pada tiap-tiap bulir seratus biji. Allah melipat gandakan (ganjaran) bagi siapa yang Dia kehendaki. Dan Allah Maha Luas (karunia-Nya) lagi Maha Mengetahui.” (QS. Al-Baqarah: 261)
                 </p>
-                <p className="font-semibold">Jazakumullahu khairan atas dukungan Anda!</p>
-                 <Button asChild size="lg">
+                
+                <Separator />
+
+                <div className="space-y-4">
+                    <p className="font-semibold">Mari berjuang bersama dalam dakwah untuk menyebarkan ilmu yang bermanfaat. Dukungan Anda sangat berarti.</p>
+                    <div>
+                        <p className="font-bold text-lg">Bank Syariah Indonesia (BSI)</p>
+                        <p className="text-2xl font-mono tracking-wider">7283392559</p>
+                        <p className="text-muted-foreground">(an. Denny Saputra)</p>
+                    </div>
+                </div>
+
+                 <Button asChild size="lg" className="w-full">
                    <Link href="https://www.instagram.com/sahijra" target="_blank" rel="noopener noreferrer">
-                    Donasi Sekarang
+                    Konfirmasi Donasi
                    </Link>
                  </Button>
+
+                 <p className="text-xs text-muted-foreground pt-4">Jazakumullahu khairan atas dukungan Anda!</p>
+
             </CardContent>
            </Card>
         </div>
