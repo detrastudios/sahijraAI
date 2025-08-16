@@ -54,6 +54,16 @@ export default function HelpPage() {
                     Arahkan kursor mouse Anda ke pesan jawaban dari AI, dan ikon "Salin" akan muncul. Klik ikon tersebut untuk menyalin teks jawaban ke clipboard Anda.
                   </AccordionContent>
                 </AccordionItem>
+                <AccordionItem value="item-5">
+                  <AccordionTrigger>Bagaimana cara menghubungi Sahijra?</AccordionTrigger>
+                  <AccordionContent>
+                    Jika Anda memiliki pertanyaan, saran, atau masukan, jangan ragu untuk menghubungi kami melalui email atau media sosial di bawah ini:
+                    <ul className="list-disc pl-6 mt-2 space-y-1">
+                      <li>Email: <a href="mailto:sahijra.official@gmail.com" className="text-primary hover:underline">sahijra.official@gmail.com</a></li>
+                      <li>Instagram: <Link href="https://www.instagram.com/sahijra" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@sahijra</Link></li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
               </Accordion>
             </CardContent>
           </Card>
