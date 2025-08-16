@@ -1,10 +1,25 @@
+'use client';
+
 import Link from 'next/link';
-import { ArrowLeft, Heart } from 'lucide-react';
+import { ArrowLeft, Heart, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { useToast } from '@/hooks/use-toast';
 
 export default function SupportPage() {
+  const { toast } = useToast();
+  const accountNumber = '7283392559';
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(accountNumber).then(() => {
+      toast({
+        title: 'Berhasil disalin',
+        description: 'Nomor rekening telah disalin ke clipboard.',
+      });
+    });
+  };
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-background">
       <header className="flex items-center gap-3 border-b bg-card px-4 py-3 shadow-sm md:px-6">
@@ -39,13 +54,19 @@ export default function SupportPage() {
                     <p className="font-semibold">Mari berjuang bersama dalam dakwah untuk menyebarkan ilmu yang bermanfaat. Dukungan Anda sangat berarti.</p>
                     <div>
                         <p className="font-bold text-lg">Bank Syariah Indonesia (BSI)</p>
-                        <p className="text-2xl font-mono tracking-wider">7283392559</p>
+                        <div className="flex items-center justify-center gap-2">
+                          <p className="text-2xl font-mono tracking-wider">{accountNumber}</p>
+                          <Button variant="ghost" size="icon" onClick={handleCopy} className="h-8 w-8">
+                            <Copy className="h-4 w-4" />
+                            <span className="sr-only">Salin nomor rekening</span>
+                          </Button>
+                        </div>
                         <p className="text-muted-foreground">(an. Denny Saputra)</p>
                     </div>
                 </div>
 
                  <Button asChild size="lg" className="w-full">
-                   <Link href="https://www.instagram.com/sahijra" target="_blank" rel="noopener noreferrer">
+                   <Link href="https://wa.me/6287722675364" target="_blank" rel="noopener noreferrer">
                     Konfirmasi Donasi
                    </Link>
                  </Button>
