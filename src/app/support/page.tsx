@@ -45,6 +45,13 @@ export default function SupportPage() {
             </CardHeader>
             <CardContent className="space-y-6 text-center">
                 <p className="text-muted-foreground">
+                  Ada berbagai cara untuk mendukung dakwah kami, mulai dari donasi, sponsorship, paid promote, hingga mempromosikan merchandise resmi kami di{' '}
+                  <Link href="https://www.instagram.com/sahijraproject" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    Sahijra Project
+                  </Link>
+                  .
+                </p>
+                <p className="text-muted-foreground">
                   “Perumpamaan (nafkah yang dikeluarkan oleh) orang-orang yang menafkahkan hartanya di jalan Allah adalah serupa dengan sebutir benih yang menumbuhkan tujuh bulir, pada tiap-tiap bulir seratus biji. Allah melipat gandakan (ganjaran) bagi siapa yang Dia kehendaki. Dan Allah Maha Luas (karunia-Nya) lagi Maha Mengetahui.” (QS. Al-Baqarah: 261)
                 </p>
                 
