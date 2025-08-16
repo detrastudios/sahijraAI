@@ -12,6 +12,6 @@ export async function askAI(question: string): Promise<string> {
     return result.answer;
   } catch (error) {
     console.error('Error calling AI:', error);
-    return 'Maaf, terjadi kesalahan saat memproses permintaan Anda. Silakan coba lagi nanti.';
+    return 'Maaf, terjadi kesalahan saat memproses permintaan Sahabat. Silakan coba lagi nanti.';
   }
 }

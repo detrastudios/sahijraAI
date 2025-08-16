@@ -28,8 +28,8 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }
     if (message.content) {
       navigator.clipboard.writeText(message.content).then(() => {
         toast({
-          title: 'Copied to clipboard',
-          description: 'The AI\'s response has been copied.',
+          title: 'Berhasil disalin',
+          description: 'Jawaban AI telah disalin ke clipboard.',
         });
       });
     }
