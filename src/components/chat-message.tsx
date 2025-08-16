@@ -1,6 +1,6 @@
 'use client';
 
-import type { FC } from 'react';
+import { type FC, useEffect, useState } from 'react';
 import { User, Copy } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
@@ -25,6 +25,11 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }
   const { toast } = useToast();
   const isAi = message.role === 'ai';
   const { resolvedTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const onCopy = () => {
     if (message.content) {
@@ -36,6 +41,8 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }
       });
     }
   };
+  
+  const logoColorClass = isMounted && resolvedTheme === 'light' ? 'text-black' : 'text-primary';
 
   return (
     <div
@@ -47,7 +54,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }
       <Avatar className="h-9 w-9 border shadow-sm">
         {isAi ? (
           <AvatarFallback className="bg-primary/10 dark:bg-primary/10">
-            <LogoIcon className={cn("h-5 w-5", resolvedTheme === 'light' ? 'text-black' : 'text-primary')} />
+            <LogoIcon className={cn("h-5 w-5", isMounted ? logoColorClass : 'text-primary')} />
           </AvatarFallback>
         ) : (
           <AvatarFallback className="bg-secondary">
