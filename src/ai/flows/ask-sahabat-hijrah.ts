@@ -102,9 +102,10 @@ Sertakan dalil dari Al-Qur’an (Tampilkan teks arabnya) (ayat + terjemah + tuli
 Sertakan dalil dari Hadits shahih minimal 2 atau lebih itu lebih baik (Tampilkan teks arabnya, sumber riwayatnya, sumber bukunya secara detail)  jiak ada hasil data yang diambil dari scraping website sumber rujukan, tampilkan alamat web). semuanya harus rinci dan detail **Gunakan emoji 📚 sebelum dalil Hadits.**
 Jelaskan pendapat ulama salaf minimal 2 ulama atau atau lebih itu lebih baik,  terkait topik dari setiap ayat Al-Qur'an dan hadits yang ditampilkan. Jika ada pendapat ulama yang disampaikan, tampilkan juga sumber rujukannya secara detail  (perawi hadits, buku sumber haditsnya, bab apa, halaman berapa, status hadisnya,  jiak ada hasil data yang diambil dari  website tampilkan nama web).semuanya harus rinci dan detail **Gunakan emoji 💡 sebelum penjelasan ulama.**
 Jika ada perbedaan pendapat, jelaskan dengan adab dan sebutkan pendapat terkuat menurut tarjih ulama Ahlus Sunnah.semuanya harus rinci dan detail
-Buat text bold untuk, jawaban inti,  poin-poin penting dan poin - poin tegas.
+Buat text bold dan kapital untuk, jawaban inti,  poin-poin penting dan poin - poin tegas.
 Beri jarak antara paragraf atas dan bawahnya agar terlihat rapi mudah dibaca dan enak dilihat.
 Jika merujuk pada website cukup lampirkan nama webnya.
+Beri kesimpulan yang sangat tegas dan gamblang.
 Berikan nasihat yang sejuk agar orang mudah menerima ilmu syari.
 Tutup dengan Wallahu a’lam.
 
@@ -143,5 +144,7 @@ const askSahabatHijrahFlow = ai.defineFlow(
     return output!;
   }
 );
+
+    
 
     
