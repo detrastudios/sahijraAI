@@ -2,7 +2,8 @@
 
 import type { FC } from 'react';
 import { useState, useRef, useEffect, useTransition } from 'react';
-import { Send } from 'lucide-react';
+import { Send, Settings } from 'lucide-react';
+import Link from 'next/link';
 
 import { askAI } from '@/app/actions';
 import { Button } from '@/components/ui/button';
@@ -12,6 +13,15 @@ import { ChatMessage, type Message } from '@/components/chat-message';
 import { LogoIcon } from '@/components/icons';
 import { useToast } from '@/hooks/use-toast';
 import { DisclaimerModal } from '@/components/disclaimer-modal';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { SettingsSheet } from '@/components/settings-sheet';
 
 export const ChatPanel: FC = () => {
   const { toast } = useToast();
@@ -25,6 +35,7 @@ export const ChatPanel: FC = () => {
   const [input, setInput] = useState('');
   const [isPending, startTransition] = useTransition();
   const [isDisclaimerOpen, setDisclaimerOpen] = useState(true);
+  const [isSettingsOpen, setSettingsOpen] = useState(false);
   const scrollAreaViewport = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,12 +80,39 @@ export const ChatPanel: FC = () => {
         isOpen={isDisclaimerOpen}
         onClose={() => setDisclaimerOpen(false)}
       />
+      <SettingsSheet
+        isOpen={isSettingsOpen}
+        onClose={() => setSettingsOpen(false)}
+      />
       <div className="flex h-screen w-full flex-col bg-background">
         <header className="flex items-center gap-3 border-b bg-card px-4 py-3 shadow-sm md:px-6">
           <LogoIcon className="h-8 w-8 text-primary" />
           <h1 className="font-headline text-xl font-semibold text-foreground">
             Sahabat Hijrah AI
           </h1>
+          <div className="ml-auto">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Settings className="h-5 w-5" />
+                  <span className="sr-only">Settings</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Settings</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onSelect={() => setSettingsOpen(true)}>
+                  Appearance
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/about">About Sahijra</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/support">Support Dakwah</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </header>
         <main className="flex-1 overflow-hidden">
           <ScrollArea className="h-full" viewportRef={scrollAreaViewport}>
