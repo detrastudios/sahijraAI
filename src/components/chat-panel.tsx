@@ -105,7 +105,7 @@ export const ChatPanel: FC = () => {
                   Appearance
                 </DropdownMenuItem>
                  <DropdownMenuItem asChild>
-                  <Link href="/help">Bantuan</Link>
+                  <Link href="/help">Help</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/about">About Sahijra</Link>
