@@ -1,14 +1,44 @@
-import type { SVGProps } from 'react';
+'use client';
 
-export function LogoIcon(props: SVGProps<SVGSVGElement>) {
+import type { SVGProps } from 'react';
+import { useLogo } from '@/hooks/use-logo';
+
+const DefaultLogo = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
+      viewBox="0 0 256 256"
       fill="currentColor"
     >
-      <path d="M12 0C8.47 0 5.29 1.28 2.86 3.49C1.93 4.29 1.93 5.71 2.86 6.51L8.49 11.14C9.42 12.07 10.84 12.07 11.77 11.14L12 10.91L12.23 11.14C13.16 12.07 14.58 12.07 15.51 11.14L21.14 6.51C22.07 5.71 22.07 4.29 21.14 3.49C18.71 1.28 15.53 0 12 0ZM12.23 12.86L12 13.09L11.77 12.86C10.84 11.93 9.42 11.93 8.49 12.86L2.86 17.49C1.93 18.29 1.93 19.71 2.86 20.51C5.29 22.72 8.47 24 12 24C15.53 24 18.71 22.72 21.14 20.51C22.07 19.71 22.07 18.29 21.14 17.49L15.51 12.86C14.58 11.93 13.16 11.93 12.23 12.86Z"/>
+      <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a64,64,0,0,1-64,64,32,32,0,0,0,0-64,95.31,95.31,0,0,0,33.32-6.68A63.9,63.9,0,0,1,192,128Z" />
     </svg>
   );
+};
+
+export function LogoIcon(props: SVGProps<SVGSVGElement>) {
+  const { logo, isMounted } = useLogo();
+
+  if (!isMounted) {
+    return <DefaultLogo {...props} />;
+  }
+  
+  if (logo) {
+    // This is a simple way to render the SVG string.
+    // It's not perfectly safe if the SVG contains scripts, but for user-provided logos it's a common approach.
+    // We also pass through props like className.
+    return (
+      <div
+        className={props.className}
+        style={{
+          width: props.width,
+          height: props.height,
+          color: 'currentColor'
+        }}
+        dangerouslySetInnerHTML={{ __html: logo }}
+      />
+    );
+  }
+
+  return <DefaultLogo {...props} />;
 }

@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 import { useTheme } from 'next-themes';
-import { Sun, Moon, Laptop } from 'lucide-react';
+import { Sun, Moon, Image as ImageIcon, Trash2 } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -12,7 +12,8 @@ import {
 } from '@/components/ui/sheet';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
+import { useLogo } from '@/hooks/use-logo';
+import { Separator } from '@/components/ui/separator';
 
 interface SettingsSheetProps {
   isOpen: boolean;
@@ -21,9 +22,20 @@ interface SettingsSheetProps {
 
 export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
   const { theme, setTheme } = useTheme();
+  const { setLogo, resetLogo } = useLogo();
 
-  const handleFontSizeChange = (value: number[]) => {
-    document.documentElement.style.setProperty('--font-size-multiplier', value[0].toString());
+  const handleLogoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file && file.type === 'image/svg+xml') {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const svgContent = e.target?.result as string;
+        if (svgContent) {
+          setLogo(svgContent);
+        }
+      };
+      reader.readAsText(file);
+    }
   };
 
   return (
@@ -55,19 +67,32 @@ export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
               </Button>
             </div>
           </div>
+          
+          <Separator />
+
           <div className="space-y-2">
-            <Label>Ukuran font</Label>
-            <Slider
-              defaultValue={[1]}
-              min={0.8}
-              max={1.2}
-              step={0.1}
-              onValueChange={handleFontSizeChange}
-            />
-             <div className="flex justify-between text-xs text-muted-foreground">
-              <span>Kecil</span>
-              <span>Default</span>
-              <span>Besar</span>
+            <Label>Logo Aplikasi (Khusus)</Label>
+            <div className='text-xs text-muted-foreground pb-2'>Ganti logo aplikasi dengan mengunggah file SVG.</div>
+            <div className="flex gap-2">
+              <Button asChild variant="outline" size="sm">
+                <label htmlFor="logo-upload" className="cursor-pointer">
+                  <ImageIcon className="mr-2 h-4 w-4" /> Ganti Logo
+                </label>
+              </Button>
+              <input
+                type="file"
+                id="logo-upload"
+                accept=".svg"
+                className="hidden"
+                onChange={handleLogoChange}
+              />
+               <Button
+                variant="outline"
+                size="sm"
+                onClick={resetLogo}
+              >
+                <Trash2 className="mr-2 h-4 w-4" /> Reset
+              </Button>
             </div>
           </div>
         </div>
