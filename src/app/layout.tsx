@@ -6,11 +6,6 @@ import { ThemeProvider } from '@/components/theme-provider';
 export const metadata: Metadata = {
   title: 'Sahabat Hijrah AI',
   description: 'Asisten AI untuk menjawab pertanyaan seputar Islam.',
-  icons: {
-    icon: '/icon.svg',
-    shortcut: '/icon.svg',
-    apple: '/icon.svg',
-  },
 };
 
 export default function RootLayout({
