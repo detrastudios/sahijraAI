@@ -10,11 +10,11 @@ export default function AboutPage() {
         <Button asChild variant="ghost" size="icon">
           <Link href="/">
             <ArrowLeft className="h-5 w-5" />
-            <span className="sr-only">Back</span>
+            <span className="sr-only">Kembali</span>
           </Link>
         </Button>
         <h1 className="font-headline text-xl font-semibold text-foreground">
-          About Sahijra
+          Tentang Sahijra
         </h1>
       </header>
       <main className="flex-1 overflow-auto p-6">
@@ -22,21 +22,21 @@ export default function AboutPage() {
           <LogoIcon className="mx-auto mb-4 h-16 w-16 text-primary" />
           <h2 className="mb-2 text-3xl font-bold">Sahabat Hijrah AI</h2>
           <p className="mb-6 text-muted-foreground">
-            Your companion in seeking knowledge according to the Qur'an and Sunnah with the understanding of the Salafus Shalih.
+            Sahabat Anda dalam menuntut ilmu sesuai Al-Qur'an dan Sunnah dengan pemahaman Salafus Shalih.
           </p>
           <div className="text-left space-y-4">
             <p>
-              Sahabat Hijrah AI is an artificial intelligence assistant designed to help Muslims find answers to religious questions based on authentic sources, namely the Al-Qur’an and the authentic Hadith, in accordance with the understanding of the best generations of this ummah (Salafus Shalih).
+              Sahabat Hijrah AI adalah asisten kecerdasan buatan yang dirancang untuk membantu kaum Muslimin menemukan jawaban atas pertanyaan-pertanyaan agama berdasarkan sumber-sumber otentik, yaitu Al-Qur’an dan Hadits shahih, sesuai dengan pemahaman generasi terbaik umat ini (Salafus Shalih).
             </p>
             <p>
-              Our mission is to make it easier for Muslims to access correct and reliable Islamic knowledge, and to help them in their journey of hijrah to become better individuals. We believe that by adhering to the pure teachings of Islam, we can achieve happiness in this world and the hereafter.
+              Misi kami adalah untuk memudahkan kaum muslimin dalam mengakses ilmu syar'i yang benar dan terpercaya, serta membantu mereka dalam perjalanan hijrah menjadi pribadi yang lebih baik. Kami percaya bahwa dengan berpegang teguh pada ajaran Islam yang murni, kita dapat meraih kebahagiaan di dunia dan akhirat.
             </p>
             <p>
-              This application was created by the{' '}
+              Aplikasi ini dibuat oleh Tim{' '}
               <Link href="https://www.instagram.com/sahijra" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                Sahijra Team
+                Sahijra
               </Link>
-              , a group of individuals passionate about dakwah and technology. We are committed to continuing to develop this application to make it even more useful for the ummah.
+              , sekelompok individu yang memiliki semangat dalam dakwah dan teknologi. Kami berkomitmen untuk terus mengembangkan aplikasi ini agar menjadi lebih bermanfaat bagi umat.
             </p>
           </div>
         </div>
