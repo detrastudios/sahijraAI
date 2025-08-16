@@ -1,13 +1,26 @@
 'use client';
 
+import type { FC } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Heart, Copy } from 'lucide-react';
+import { Heart, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
-export default function SupportPage() {
+interface SupportSheetProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const SupportSheet: FC<SupportSheetProps> = ({ isOpen, onClose }) => {
   const { toast } = useToast();
   const accountNumber = '7283392559';
 
@@ -21,29 +34,20 @@ export default function SupportPage() {
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background">
-      <header className="flex items-center gap-3 border-b bg-card px-4 py-3 shadow-sm md:px-6">
-        <Button asChild variant="ghost" size="icon">
-          <Link href="/">
-            <ArrowLeft className="h-5 w-5" />
-            <span className="sr-only">Kembali</span>
-          </Link>
-        </Button>
-        <h1 className="font-headline text-xl font-semibold text-foreground">
-          Dukung Dakwah
-        </h1>
-      </header>
-      <main className="flex-1 overflow-auto p-4 md:p-6">
-        <div className="mx-auto max-w-2xl">
-           <Card>
-            <CardHeader className="text-center">
+    <Sheet open={isOpen} onOpenChange={onClose}>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Dukung Dakwah</SheetTitle>
+          <SheetDescription>
+            Kontribusi Sahabat membantu kami menyebarkan ilmu bermanfaat.
+          </SheetDescription>
+        </SheetHeader>
+        <ScrollArea className="h-[calc(100%-80px)]">
+        <div className="py-4 pr-6">
+            <div className="text-center">
               <Heart className="mx-auto mb-4 h-12 w-12 text-primary" />
-              <CardTitle>Dukung Dakwah Kami</CardTitle>
-              <CardDescription>
-                Kontribusi Sahabat membantu kami untuk terus menyebarkan ilmu yang bermanfaat.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6 text-center">
+            </div>
+            <div className="space-y-6 text-center">
                 <p className="text-muted-foreground">
                   Ada berbagai cara untuk mendukung dakwah kami, mulai dari donasi, sponsorship, paid promote, hingga dengan berbelanja merchandise resmi kami di{' '}
                   <Link href="https://www.instagram.com/sahijraproject" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
@@ -79,11 +83,10 @@ export default function SupportPage() {
                  </Button>
 
                  <p className="text-xs text-muted-foreground pt-4">Jazakumullahu khairan atas dukungan Sahabat!</p>
-
-            </CardContent>
-           </Card>
+            </div>
         </div>
-      </main>
-    </div>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
   );
-}
+};

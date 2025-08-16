@@ -23,6 +23,9 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { SettingsSheet } from '@/components/settings-sheet';
 import { HistorySheet } from '@/components/history-sheet';
+import { HelpSheet } from '@/components/help-sheet';
+import { AboutSheet } from '@/components/about-sheet';
+import { SupportSheet } from '@/components/support-sheet';
 
 const initialMessages: Message[] = [
   {
@@ -46,6 +49,9 @@ export const ChatPanel: FC = () => {
   const [isDisclaimerOpen, setDisclaimerOpen] = useState(true);
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const [isHistoryOpen, setHistoryOpen] = useState(false);
+  const [isHelpOpen, setHelpOpen] = useState(false);
+  const [isAboutOpen, setAboutOpen] = useState(false);
+  const [isSupportOpen, setSupportOpen] = useState(false);
   const [history, setHistory] = useState<ChatHistory[]>([]);
   const scrollAreaViewport = useRef<HTMLDivElement>(null);
 
@@ -141,6 +147,10 @@ export const ChatPanel: FC = () => {
         onDeleteChat={deleteChat}
         onNewChat={handleNewChat}
       />
+      <HelpSheet isOpen={isHelpOpen} onClose={() => setHelpOpen(false)} />
+      <AboutSheet isOpen={isAboutOpen} onClose={() => setAboutOpen(false)} />
+      <SupportSheet isOpen={isSupportOpen} onClose={() => setSupportOpen(false)} />
+
       <div className="flex h-screen w-full flex-col bg-background">
         <header className="flex items-center gap-3 border-b bg-card px-4 py-3 shadow-sm md:px-6">
           <LogoIcon className="h-8 w-8 text-primary" />
@@ -169,14 +179,14 @@ export const ChatPanel: FC = () => {
                 <DropdownMenuItem onSelect={() => setSettingsOpen(true)}>
                   Tampilan
                 </DropdownMenuItem>
-                 <DropdownMenuItem asChild>
-                  <Link href="/help">Pusat Bantuan</Link>
+                 <DropdownMenuItem onSelect={() => setHelpOpen(true)}>
+                  Pusat Bantuan
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/about">Tentang Sahijra</Link>
+                <DropdownMenuItem onSelect={() => setAboutOpen(true)}>
+                  Tentang Sahijra
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/support">Dukung Dakwah</Link>
+                <DropdownMenuItem onSelect={() => setSupportOpen(true)}>
+                  Dukung Dakwah
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

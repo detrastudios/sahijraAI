@@ -1,34 +1,36 @@
+'use client';
+
+import type { FC } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, HelpCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { HelpCircle } from 'lucide-react';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-export default function HelpPage() {
+interface HelpSheetProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const HelpSheet: FC<HelpSheetProps> = ({ isOpen, onClose }) => {
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background">
-      <header className="flex items-center gap-3 border-b bg-card px-4 py-3 shadow-sm md:px-6">
-        <Button asChild variant="ghost" size="icon">
-          <Link href="/">
-            <ArrowLeft className="h-5 w-5" />
-            <span className="sr-only">Kembali</span>
-          </Link>
-        </Button>
-        <h1 className="font-headline text-xl font-semibold text-foreground">
-          Pusat Bantuan
-        </h1>
-      </header>
-      <main className="flex-1 overflow-auto p-4 md:p-6">
-        <div className="mx-auto max-w-2xl">
-          <Card>
-            <CardHeader className="text-center">
-              <HelpCircle className="mx-auto mb-4 h-12 w-12 text-primary" />
-              <CardTitle>Pusat Bantuan</CardTitle>
-              <CardDescription>
-                Temukan jawaban untuk pertanyaan yang sering diajukan di sini.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+    <Sheet open={isOpen} onOpenChange={onClose}>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Pusat Bantuan</SheetTitle>
+          <SheetDescription>
+            Temukan jawaban untuk pertanyaan yang sering diajukan di sini.
+          </SheetDescription>
+        </SheetHeader>
+        <div className="py-4">
+            <div className="text-center mb-4">
+                <HelpCircle className="mx-auto h-12 w-12 text-primary" />
+            </div>
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Bagaimana cara menggunakan Sahabat Hijrah AI?</AccordionTrigger>
@@ -71,10 +73,8 @@ export default function HelpPage() {
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
-            </CardContent>
-          </Card>
         </div>
-      </main>
-    </div>
+      </SheetContent>
+    </Sheet>
   );
-}
+};

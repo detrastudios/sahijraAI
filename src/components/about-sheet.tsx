@@ -1,29 +1,41 @@
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { LogoIcon } from '@/components/icons';
-import { Separator } from '@/components/ui/separator';
+'use client';
 
-export default function AboutPage() {
+import type { FC } from 'react';
+import Link from 'next/link';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { LogoIcon } from '@/components/icons';
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+
+interface AboutSheetProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const AboutSheet: FC<AboutSheetProps> = ({ isOpen, onClose }) => {
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background">
-      <header className="flex items-center gap-3 border-b bg-card px-4 py-3 shadow-sm md:px-6">
-        <Button asChild variant="ghost" size="icon">
-          <Link href="/">
-            <ArrowLeft className="h-5 w-5" />
-            <span className="sr-only">Kembali</span>
-          </Link>
-        </Button>
-        <h1 className="font-headline text-xl font-semibold text-foreground">
-          Tentang Sahijra
-        </h1>
-      </header>
-      <main className="flex-1 overflow-auto p-4 md:p-6">
-        <div className="mx-auto max-w-2xl">
-          <div className="text-center">
+    <Sheet open={isOpen} onOpenChange={onClose}>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Tentang Sahijra</SheetTitle>
+          <SheetDescription>
+            Sahabat dalam menuntut ilmu sesuai Al-Qur'an dan Sunnah.
+          </SheetDescription>
+        </SheetHeader>
+        <ScrollArea className="h-[calc(100%-80px)]">
+        <div className="py-4 pr-6">
+          <div className="text-center mb-6">
             <LogoIcon className="mx-auto mb-4 h-16 w-16 text-primary" />
             <h2 className="mb-2 text-3xl font-bold">Sahabat Hijrah AI</h2>
-            <p className="mb-6 text-muted-foreground">
+            <p className="text-muted-foreground">
               Sahabat dalam menuntut ilmu sesuai Al-Qur'an dan Sunnah dengan pemahaman Salafus Shalih.
             </p>
           </div>
@@ -79,7 +91,8 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
   );
-}
+};
