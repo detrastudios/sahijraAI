@@ -10,11 +10,11 @@ export default function SupportPage() {
         <Button asChild variant="ghost" size="icon">
           <Link href="/">
             <ArrowLeft className="h-5 w-5" />
-            <span className="sr-only">Back</span>
+            <span className="sr-only">Kembali</span>
           </Link>
         </Button>
         <h1 className="font-headline text-xl font-semibold text-foreground">
-          Support Dakwah
+          Dukung Dakwah
         </h1>
       </header>
       <main className="flex-1 overflow-auto p-6">
@@ -22,19 +22,19 @@ export default function SupportPage() {
            <Card>
             <CardHeader className="text-center">
               <Heart className="mx-auto mb-4 h-12 w-12 text-primary" />
-              <CardTitle>Support Our Dakwah</CardTitle>
+              <CardTitle>Dukung Dakwah Kami</CardTitle>
               <CardDescription>
-                Your contribution helps us continue to spread beneficial knowledge.
+                Kontribusi Anda membantu kami untuk terus menyebarkan ilmu yang bermanfaat.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 text-center">
                 <p>
-                  “The likeness of those who spend their wealth in the way of Allah is as the likeness of a grain (of corn); it grows seven ears, and each ear has a hundred grains. Allah gives manifold increase to whom He wills. And Allah is All-Sufficient for His creatures’ needs, All-Knower.” (QS. Al-Baqarah: 261)
+                  “Perumpamaan (nafkah yang dikeluarkan oleh) orang-orang yang menafkahkan hartanya di jalan Allah adalah serupa dengan sebutir benih yang menumbuhkan tujuh bulir, pada tiap-tiap bulir seratus biji. Allah melipat gandakan (ganjaran) bagi siapa yang Dia kehendaki. Dan Allah Maha Luas (karunia-Nya) lagi Maha Mengetahui.” (QS. Al-Baqarah: 261)
                 </p>
-                <p className="font-semibold">Jazakumullahu khairan for your support!</p>
+                <p className="font-semibold">Jazakumullahu khairan atas dukungan Anda!</p>
                  <Button asChild size="lg">
                    <Link href="https://www.instagram.com/sahijra" target="_blank" rel="noopener noreferrer">
-                    Donate Now
+                    Donasi Sekarang
                    </Link>
                  </Button>
             </CardContent>
