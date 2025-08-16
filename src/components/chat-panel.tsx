@@ -104,6 +104,9 @@ export const ChatPanel: FC = () => {
                 <DropdownMenuItem onSelect={() => setSettingsOpen(true)}>
                   Appearance
                 </DropdownMenuItem>
+                 <DropdownMenuItem asChild>
+                  <Link href="/help">Bantuan</Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/about">About Sahijra</Link>
                 </DropdownMenuItem>
