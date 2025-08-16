@@ -1,6 +1,6 @@
 'use client';
 
-import type { FC } from 'react';
+import { useState, type FC } from 'react';
 import { useTheme } from 'next-themes';
 import { Sun, Moon, Image as ImageIcon, Trash2 } from 'lucide-react';
 import {
@@ -21,6 +21,7 @@ interface SettingsSheetProps {
 }
 
 export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
+  const [showLogoSettings, setShowLogoSettings] = useState(false);
   const { theme, setTheme } = useTheme();
   const { setLogo, resetLogo } = useLogo();
 
@@ -43,7 +44,10 @@ export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Tampilan</SheetTitle>
-          <SheetDescription>
+          <SheetDescription
+            onClick={() => setShowLogoSettings((prev) => !prev)}
+            className="cursor-pointer hover:underline"
+          >
             Sesuaikan tampilan dan nuansa aplikasi.
           </SheetDescription>
         </SheetHeader>
@@ -68,33 +72,36 @@ export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
           
-          <Separator />
-
-          <div className="space-y-2">
-            <Label>Logo Aplikasi (Khusus)</Label>
-            <div className='text-xs text-muted-foreground pb-2'>Ganti logo aplikasi dengan mengunggah file SVG.</div>
-            <div className="flex gap-2">
-              <Button asChild variant="outline" size="sm">
-                <label htmlFor="logo-upload" className="cursor-pointer">
-                  <ImageIcon className="mr-2 h-4 w-4" /> Ganti Logo
-                </label>
-              </Button>
-              <input
-                type="file"
-                id="logo-upload"
-                accept=".svg"
-                className="hidden"
-                onChange={handleLogoChange}
-              />
-               <Button
-                variant="outline"
-                size="sm"
-                onClick={resetLogo}
-              >
-                <Trash2 className="mr-2 h-4 w-4" /> Reset
-              </Button>
-            </div>
-          </div>
+          {showLogoSettings && (
+            <>
+              <Separator />
+              <div className="space-y-2">
+                <Label>Logo Aplikasi (Khusus)</Label>
+                <div className='text-xs text-muted-foreground pb-2'>Ganti logo aplikasi dengan mengunggah file SVG.</div>
+                <div className="flex gap-2">
+                  <Button asChild variant="outline" size="sm">
+                    <label htmlFor="logo-upload" className="cursor-pointer">
+                      <ImageIcon className="mr-2 h-4 w-4" /> Ganti Logo
+                    </label>
+                  </Button>
+                  <input
+                    type="file"
+                    id="logo-upload"
+                    accept=".svg"
+                    className="hidden"
+                    onChange={handleLogoChange}
+                  />
+                   <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={resetLogo}
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" /> Reset
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </SheetContent>
     </Sheet>
