@@ -22,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { SettingsSheet } from '@/components/settings-sheet';
+import { HistorySheet } from '@/components/history-sheet';
 
 const initialMessages: Message[] = [
   {
@@ -31,6 +32,12 @@ const initialMessages: Message[] = [
   },
 ];
 
+export type ChatHistory = {
+  id: string;
+  title: string;
+  messages: Message[];
+};
+
 export const ChatPanel: FC = () => {
   const { toast } = useToast();
   const [messages, setMessages] = useState<Message[]>(initialMessages);
@@ -38,15 +45,51 @@ export const ChatPanel: FC = () => {
   const [isPending, startTransition] = useTransition();
   const [isDisclaimerOpen, setDisclaimerOpen] = useState(true);
   const [isSettingsOpen, setSettingsOpen] = useState(false);
+  const [isHistoryOpen, setHistoryOpen] = useState(false);
+  const [history, setHistory] = useState<ChatHistory[]>([]);
   const scrollAreaViewport = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const storedHistory = localStorage.getItem('chatHistory');
+    if (storedHistory) {
+      setHistory(JSON.parse(storedHistory));
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
+  const saveHistory = (newHistory: ChatHistory[]) => {
+    setHistory(newHistory);
+    localStorage.setItem('chatHistory', JSON.stringify(newHistory));
+  };
+
   const handleNewChat = () => {
+    if (messages.length > 1) {
+      const newChat: ChatHistory = {
+        id: new Date().toISOString(),
+        title: messages[1]?.content.substring(0, 30) + '...' || 'New Chat',
+        messages: messages,
+      };
+      saveHistory([newChat, ...history]);
+    }
     setMessages(initialMessages);
   };
+  
+  const loadChat = (chatId: string) => {
+    const chat = history.find(c => c.id === chatId);
+    if (chat) {
+      setMessages(chat.messages);
+      setHistoryOpen(false);
+    }
+  };
+
+  const deleteChat = (chatId: string) => {
+    const updatedHistory = history.filter(c => c.id !== chatId);
+    saveHistory(updatedHistory);
+  };
+
 
   const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -90,6 +133,14 @@ export const ChatPanel: FC = () => {
         isOpen={isSettingsOpen}
         onClose={() => setSettingsOpen(false)}
       />
+      <HistorySheet
+        isOpen={isHistoryOpen}
+        onClose={() => setHistoryOpen(false)}
+        history={history}
+        onLoadChat={loadChat}
+        onDeleteChat={deleteChat}
+        onNewChat={handleNewChat}
+      />
       <div className="flex h-screen w-full flex-col bg-background">
         <header className="flex items-center gap-3 border-b bg-card px-4 py-3 shadow-sm md:px-6">
           <LogoIcon className="h-8 w-8 text-primary" />
@@ -101,10 +152,7 @@ export const ChatPanel: FC = () => {
               <MessageSquarePlus className="h-5 w-5" />
               <span className="sr-only">Chat Baru</span>
             </Button>
-            <Button variant="ghost" size="icon" onClick={() => {
-              // TODO: Implement history functionality
-              toast({ title: 'Fitur Riwayat', description: 'Fitur ini sedang dalam pengembangan.' });
-            }}>
+            <Button variant="ghost" size="icon" onClick={() => setHistoryOpen(true)}>
               <History className="h-5 w-5" />
               <span className="sr-only">Riwayat</span>
             </Button>
