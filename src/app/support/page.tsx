@@ -45,7 +45,7 @@ export default function SupportPage() {
             </CardHeader>
             <CardContent className="space-y-6 text-center">
                 <p className="text-muted-foreground">
-                  Ada berbagai cara untuk mendukung dakwah kami, mulai dari donasi, sponsorship, paid promote, hingga mempromosikan merchandise resmi kami di{' '}
+                  Ada berbagai cara untuk mendukung dakwah kami, mulai dari donasi, sponsorship, paid promote, hingga dengan berbelanja merchandise resmi kami di{' '}
                   <Link href="https://www.instagram.com/sahijraproject" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                     Sahijra Project
                   </Link>
