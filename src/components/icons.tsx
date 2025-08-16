@@ -8,10 +8,16 @@ const DefaultLogo = (props: SVGProps<SVGSVGElement>) => {
     <svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 256 256"
-      fill="currentColor"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a64,64,0,0,1-64,64,32,32,0,0,0,0-64,95.31,95.31,0,0,0,33.32-6.68A63.9,63.9,0,0,1,192,128Z" />
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
     </svg>
   );
 };
@@ -27,6 +33,8 @@ export function LogoIcon(props: SVGProps<SVGSVGElement>) {
     // This is a simple way to render the SVG string.
     // It's not perfectly safe if the SVG contains scripts, but for user-provided logos it's a common approach.
     // We also pass through props like className.
+    const sanitizedLogo = logo.replace(/fill="[^"]*"/g, 'fill="currentColor"');
+
     return (
       <div
         className={props.className}
@@ -35,7 +43,7 @@ export function LogoIcon(props: SVGProps<SVGSVGElement>) {
           height: props.height,
           color: 'currentColor'
         }}
-        dangerouslySetInnerHTML={{ __html: logo }}
+        dangerouslySetInnerHTML={{ __html: sanitizedLogo }}
       />
     );
   }
