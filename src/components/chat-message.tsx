@@ -2,6 +2,7 @@
 
 import type { FC } from 'react';
 import { User, Copy } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -23,6 +24,7 @@ interface ChatMessageProps {
 export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }) => {
   const { toast } = useToast();
   const isAi = message.role === 'ai';
+  const { resolvedTheme } = useTheme();
 
   const onCopy = () => {
     if (message.content) {
@@ -44,8 +46,8 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, isLoading = false }
     >
       <Avatar className="h-9 w-9 border shadow-sm">
         {isAi ? (
-          <AvatarFallback className="bg-primary/10 text-foreground dark:bg-primary/10 dark:text-primary">
-            <LogoIcon className="h-5 w-5" />
+          <AvatarFallback className="bg-primary/10 dark:bg-primary/10">
+            <LogoIcon className={cn("h-5 w-5", resolvedTheme === 'light' ? 'text-black' : 'text-primary')} />
           </AvatarFallback>
         ) : (
           <AvatarFallback className="bg-secondary">
