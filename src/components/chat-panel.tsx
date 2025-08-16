@@ -27,7 +27,7 @@ const initialMessages: Message[] = [
   {
     role: 'ai',
     content:
-      "Assalamu'alaikum, saya Sahabat Hijrah. Silakan ajukan pertanyaan Anda tentang agama Islam. InsyaAllah saya akan bantu menjawab berdasarkan Al-Qur'an dan Sunnah.",
+      "Assalamu'alaikum, Sahabat! Silakan ajukan pertanyaan kamu seputar agama Islam. InsyaAllah saya akan bantu menjawab berdasarkan Al-Qur'an dan Sunnah. Barkallahu fiikum",
   },
 ];
 
