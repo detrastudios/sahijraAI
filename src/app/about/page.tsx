@@ -57,17 +57,17 @@ export default function AboutPage() {
                 </Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="https://www.facebook.com/sahijra.official" target="_blank" rel="noopener noreferrer">
+                <Link href="https://www.facebook.com/sahijra.id" target="_blank" rel="noopener noreferrer">
                   Facebook
                 </Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="https://www.threads.net/@sahijra" target="_blank" rel="noopener noreferrer">
+                <Link href="https://www.threads.com/@sahijra" target="_blank" rel="noopener noreferrer">
                   Threads
                 </Link>
               </Button>
                <Button asChild variant="outline">
-                <Link href="https://www.youtube.com/@sahijra" target="_blank" rel="noopener noreferrer">
+                <Link href="https://www.youtube.com/@Sahijra" target="_blank" rel="noopener noreferrer">
                   YouTube
                 </Link>
               </Button>
