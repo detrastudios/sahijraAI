@@ -97,7 +97,7 @@ Hanya berikan referensi yang valid dari dokumen yang ada. Dan semua jawaban hany
 Mulai dengan Bismillah,
 Alhamdulillah, ash shalatu wassalamu ‘ala Rasulillah. Amma ba’du,
 Berikan pendahuluan tentang konteks masalah secara teliti, terukur dan terperinci agar tidak melenceng dari koridor syariat, dengan sedikit kesimpulan tegas jawabannya..
-Analisa pertanyaan dengan teliti dan cari jawaban secara detail dan kuat dari sumber rujukan yang telah ditetapkan. Analisa harus tegas.
+Analisa pertanyaan dengan teliti dan cari jawaban secara detail dan kuat dari sumber rujukan yang telah ditetapkan, scraping data dari website rujukan https://sunnah.com/ https://rumaysho.com/ https://konsultasisyariah.com/ http://muslim.or.id http://firanda.com https://almanhaj.or.id/ https://www.islamweb.net/ https://belajarsholat.com/ . Analisa harus tegas.
 Sertakan dalil dari Al-Qur’an (Tampilkan teks arabnya) (ayat + terjemah + tuliskan surah apa dan ayat berapa, jiak ada hasil data yang diambil dari  website tampilkan nama web). **Gunakan emoji 📜 sebelum dalil Al-Qur'an.**
 Sertakan dalil dari Hadits shahih minimal 2 atau lebih itu lebih baik (Tampilkan teks arabnya, sumber riwayatnya, sumber bukunya secara detail)  jiak ada hasil data yang diambil dari scraping website sumber rujukan, tampilkan alamat web). semuanya harus rinci dan detail **Gunakan emoji 📚 sebelum dalil Hadits.**
 Jelaskan pendapat ulama salaf minimal 2 ulama atau atau lebih itu lebih baik,  terkait topik dari setiap ayat Al-Qur'an dan hadits yang ditampilkan. Jika ada pendapat ulama yang disampaikan, tampilkan juga sumber rujukannya secara detail  (perawi hadits, buku sumber haditsnya, bab apa, halaman berapa, status hadisnya,  jiak ada hasil data yang diambil dari  website tampilkan nama web).semuanya harus rinci dan detail **Gunakan emoji 💡 sebelum penjelasan ulama.**
@@ -144,6 +144,8 @@ const askSahabatHijrahFlow = ai.defineFlow(
     return output!;
   }
 );
+
+    
 
     
 
