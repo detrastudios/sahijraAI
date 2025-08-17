@@ -33,6 +33,8 @@ export const DisclaimerModal: FC<DisclaimerModalProps> = ({
             Segala kebenaran mutlak hanyalah milik Allah ﷻ. Asisten AI bermanhaj
             salaf ini hanyalah alat bantu yang berupaya memberikan jawaban
             berdasarkan Al-Qur’an dan hadits shahih sesuai pemahaman Salaf.
+            <br />
+            <br />
             Namun, AI tidaklah ma’shum (terjaga dari kesalahan) dan tidak 100%
             valid. Gunakanlah dengan bijak, jauhi perdebatan, selalu kroscek dan
             konsultasikan dengan Ustadz yang berilmu agar mendapatkan pemahaman
