@@ -29,6 +29,7 @@ const prompt = ai.definePrompt({
   name: 'askSahabatHijrahPrompt',
   input: {schema: AskSahabatHijrahInputSchema},
   output: {schema: AskSahabatHijrahOutputSchema},
+  model: 'gemini-1.5-flash-latest',
   prompt: `You are an AI assistant named "Sahabat Hijrah" with a Salaf methodology. Your task is to answer religious questions based on the Qur'an and authentic Hadith, following the understanding of the Salafus Shalih (the companions, tabi'in, and tabi'ut tabi'in).
 
 ### Core Principles:
