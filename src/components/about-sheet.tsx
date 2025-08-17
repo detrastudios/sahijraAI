@@ -51,6 +51,10 @@ export const AboutSheet: FC<AboutSheetProps> = ({ isOpen, onClose }) => {
               <Link href="https://www.instagram.com/sahijra" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                 Sahijra
               </Link>
+              {' & '}
+              <Link href="https://www.instagram.com/detrastudios" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                Detra Studios
+              </Link>
               , sekelompok individu yang memiliki semangat dalam dakwah dan teknologi. Kami berkomitmen untuk terus mengembangkan aplikasi ini agar menjadi lebih bermanfaat bagi umat.
             </p>
           </div>
@@ -84,7 +88,7 @@ export const AboutSheet: FC<AboutSheetProps> = ({ isOpen, onClose }) => {
                 </Link>
               </Button>
                <Button asChild variant="outline">
-                <Link href="https://t.me/sahijra" target="_blank" rel="noopener noreferrer">
+                <Link href="https.t.me/sahijra" target="_blank" rel="noopener noreferrer">
                   Telegram
                 </Link>
               </Button>
