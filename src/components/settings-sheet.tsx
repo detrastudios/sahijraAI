@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FC } from 'react';
+import { useState, type FC, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { Sun, Moon, Image as ImageIcon, Trash2 } from 'lucide-react';
 import {
@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useLogo } from '@/hooks/use-logo';
 import { Separator } from '@/components/ui/separator';
+import { Slider } from '@/components/ui/slider';
 
 interface SettingsSheetProps {
   isOpen: boolean;
@@ -24,6 +25,25 @@ export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
   const [showLogoSettings, setShowLogoSettings] = useState(false);
   const { theme, setTheme } = useTheme();
   const { setLogo, resetLogo } = useLogo();
+  const [fontSize, setFontSize] = useState(16);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const storedFontSize = localStorage.getItem('app-font-size');
+    if (storedFontSize) {
+      const newSize = parseInt(storedFontSize, 10);
+      setFontSize(newSize);
+      root.style.fontSize = `${newSize}px`;
+    }
+  }, []);
+
+  const handleFontSizeChange = (value: number[]) => {
+    const newSize = value[0];
+    setFontSize(newSize);
+    document.documentElement.style.fontSize = `${newSize}px`;
+    localStorage.setItem('app-font-size', newSize.toString());
+  };
+
 
   const handleLogoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -69,6 +89,20 @@ export const SettingsSheet: FC<SettingsSheetProps> = ({ isOpen, onClose }) => {
               >
                 <Moon className="mr-2 h-4 w-4" /> Gelap
               </Button>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label>Ukuran Font</Label>
+             <Slider
+              defaultValue={[fontSize]}
+              max={20}
+              min={12}
+              step={1}
+              onValueChange={handleFontSizeChange}
+            />
+            <div className="text-center text-sm text-muted-foreground">
+              {fontSize}px
             </div>
           </div>
           
